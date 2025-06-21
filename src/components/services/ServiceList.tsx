@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiCheckCircle, FiFileText, FiUsers, FiShield, FiDatabase } from 'react-icons/fi';
+import { IconType } from 'react-icons';
 
 // Animation variants
 const containerVariants = {
@@ -24,8 +25,16 @@ const itemVariants = {
   }
 };
 
+// Define interfaces for props
+interface ServiceCategoryProps {
+  title: string;
+  description: string;
+  icon: IconType;
+  services: string[];
+}
+
 // Service category component
-const ServiceCategory = ({ title, description, icon: Icon, services }) => {
+const ServiceCategory = ({ title, description, icon: Icon, services }: ServiceCategoryProps) => {
   return (
     <motion.div 
       className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 md:p-8"

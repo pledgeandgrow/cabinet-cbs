@@ -88,7 +88,11 @@ const SchemaOrg = () => {
     '@type': 'Service',
     '@id': `${baseUrl}/services#service`,
     name: 'Services de Conseil Fiscal et Juridique',
+    url: `${baseUrl}/services`,
     provider: {
+      '@id': `${baseUrl}/#organization`
+    },
+    publisher: {
       '@id': `${baseUrl}/#organization`
     },
     serviceType: ['Conseil Fiscal', 'Conseil Juridique', 'Conseil Social', 'Gestion RH'],
@@ -107,6 +111,9 @@ const SchemaOrg = () => {
     name: 'Contact | Cabinet CBS',
     url: `${baseUrl}/contact`,
     description: 'Contactez le Cabinet CBS pour vos besoins en conseil fiscal, juridique et social au Mali.',
+    publisher: {
+      '@id': `${baseUrl}/#organization`
+    },
     mainEntity: {
       '@type': 'Organization',
       '@id': `${baseUrl}/#organization`

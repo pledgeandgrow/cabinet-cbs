@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui';
 import { FiArrowRight } from 'react-icons/fi';
+import Link from 'next/link';
 
 const ExpertiseCTA = () => {
   return (
@@ -31,23 +32,25 @@ const ExpertiseCTA = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Button 
-              variant="light"
-              size="lg"
-              href="/services"
-              className="w-full md:w-auto"
-            >
-              Découvrir nos services
-            </Button>
+            <Link href="/services">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="w-full md:w-auto bg-white text-primary hover:bg-gray-100"
+              >
+                Découvrir nos services
+              </Button>
+            </Link>
             
-            <Button 
-              variant="outline"
-              size="lg"
-              href="/contact"
-              className="w-full md:w-auto text-white border-white hover:bg-white/10"
-            >
-              Nous contacter <FiArrowRight className="ml-2" />
-            </Button>
+            <Link href="/contact">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="w-full md:w-auto text-white border-white hover:bg-white/10"
+              >
+                Nous contacter <FiArrowRight className="ml-2" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>

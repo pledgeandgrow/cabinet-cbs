@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui';
 import { FiMail, FiPhone } from 'react-icons/fi';
+import Link from 'next/link';
 
 const ServiceCTA = () => {
   return (
@@ -48,14 +49,15 @@ const ServiceCTA = () => {
                 Prendre rendez-vous
               </h3>
               
-              <Button 
-                variant="primary"
-                size="lg"
-                href="/contact"
-                className="w-full"
-              >
-                Contactez-nous
-              </Button>
+              <Link href="/contact">
+                <Button 
+                  variant="primary"
+                  size="lg"
+                  className="w-full"
+                >
+                  Contactez-nous
+                </Button>
+              </Link>
               
               <p className="text-gray-600 dark:text-gray-300 text-sm mt-4 text-center">
                 Nous vous répondrons dans les plus brefs délais
