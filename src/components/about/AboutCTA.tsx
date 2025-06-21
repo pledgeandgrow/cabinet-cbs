@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui';
+import Link from 'next/link';
 
 const AboutCTA = () => {
   return (
@@ -32,14 +33,15 @@ const AboutCTA = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Button 
-              variant="light"
-              size="lg"
-              href="/contact"
-              className="min-w-[200px]"
-            >
-              Contactez-nous
-            </Button>
+            <Link href="/contact">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="min-w-[200px] bg-white text-primary hover:bg-gray-100"
+              >
+                Contactez-nous
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>
