@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://cabinet-cbs.com/sitemap.xml
+
+# Disallow admin paths
+Disallow: /admin/
+Disallow: /api/
+
+# Crawl delay
+Crawl-delay: 10
