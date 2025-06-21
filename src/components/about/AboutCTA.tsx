@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const AboutCTA = () => {
   return (
-    <section className="py-16 md:py-20 bg-primary dark:bg-blue-900 text-white">
+    <section className="py-16 md:py-20 bg-blue-600 dark:bg-blue-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <motion.div
@@ -19,7 +19,7 @@ const AboutCTA = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Une équipe d&apos;experts à votre service
             </h2>
-            <p className="text-lg text-white/90 mb-6">
+            <p className="text-lg text-white mb-6">
               Besoin d&apos;un accompagnement fiscal, juridique ou en ressources humaines ? 
               Notre équipe pluridisciplinaire est composée d&apos;experts reconnus dans leur domaine, 
               prêts à mettre leur expérience et leur savoir-faire à votre service.
@@ -37,7 +37,7 @@ const AboutCTA = () => {
               <Button 
                 variant="outline"
                 size="lg"
-                className="min-w-[200px] bg-white text-primary hover:bg-gray-100"
+                className="min-w-[200px] bg-white dark:bg-gray-100 text-primary dark:text-blue-800 hover:bg-gray-100 dark:hover:bg-white shadow-md"
               >
                 Contactez-nous
               </Button>

@@ -37,15 +37,17 @@ export default function RootLayout({
         <SchemaOrg />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300`}
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
+        <ThemeProvider>
           <AccessibilityEnhancements />
           <div className="flex min-h-screen flex-col">
             <SkipToContent />
             <Navbar />
-            <main id="main-content" className="flex-1 pt-16" tabIndex={-1}>
+            {/* Spacer to prevent content from overlapping with fixed navbar */}
+            <div className="h-24 md:h-28"></div>
+            <main id="main-content" className="flex-1" tabIndex={-1}>
               {children}
             </main>
             <Footer />

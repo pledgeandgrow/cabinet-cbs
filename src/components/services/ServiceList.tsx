@@ -37,12 +37,12 @@ interface ServiceCategoryProps {
 const ServiceCategory = ({ title, description, icon: Icon, services }: ServiceCategoryProps) => {
   return (
     <motion.div 
-      className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 md:p-8"
+      className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 md:p-8 border border-gray-100 dark:border-gray-700"
       variants={itemVariants}
     >
       <div className="flex items-center mb-4">
-        <div className="bg-primary/10 dark:bg-blue-900/20 p-3 rounded-full mr-4">
-          <Icon className="h-6 w-6 text-primary dark:text-blue-400" />
+        <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full mr-4 shadow-sm">
+          <Icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
         </div>
         <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">{title}</h3>
       </div>

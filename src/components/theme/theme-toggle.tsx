@@ -7,18 +7,29 @@ import { FiSun, FiMoon } from "react-icons/fi"
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
+  const [isChanging, setIsChanging] = React.useState(false)
 
   // After mounting, we have access to the theme
   React.useEffect(() => setMounted(true), [])
 
-  // Handle theme toggle with explicit theme setting
+  // Handle theme toggle with explicit theme setting and visual feedback
   const toggleTheme = React.useCallback(() => {
-    if (resolvedTheme === "dark") {
-      setTheme("light")
-    } else {
-      setTheme("dark")
-    }
+    setIsChanging(true)
+    const newTheme = resolvedTheme === "dark" ? "light" : "dark"
+    setTheme(newTheme)
+    
+    // Add a small delay to show the transition effect
+    setTimeout(() => {
+      setIsChanging(false)
+    }, 300)
   }, [resolvedTheme, setTheme])
+
+  // Log the current theme for debugging
+  React.useEffect(() => {
+    if (mounted) {
+      console.log("Current theme:", resolvedTheme)
+    }
+  }, [mounted, resolvedTheme])
 
   if (!mounted) {
     return (
@@ -35,7 +46,10 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="rounded-full p-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 transition-all duration-300 shadow-sm"
+      className={`rounded-full p-2 ${isChanging ? 'animate-pulse' : ''} ${resolvedTheme === "dark" 
+        ? 'bg-gray-700 hover:bg-gray-600 ring-1 ring-gray-600' 
+        : 'bg-gray-200 hover:bg-gray-300 ring-1 ring-gray-300'} 
+        transition-all duration-300 shadow-md`}
       aria-label="Toggle theme"
     >
       {resolvedTheme === "dark" ? (

@@ -42,14 +42,13 @@ const Navbar = () => {
   // Navbar classes based on scroll state
   const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
     scrolled 
-      ? 'bg-white dark:bg-gray-900 shadow-md py-2' 
+      ? 'bg-white dark:bg-gray-900 shadow-md py-2 border-b border-gray-100 dark:border-gray-800' 
       : 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm py-3'
   }`;
   
   return (
     <>
-      {/* Spacer div to prevent content from being hidden under the navbar */}
-      <div className="h-16 md:h-20 w-full"></div>
+      {/* Spacer div removed - spacing now handled by page components */}
       
       <nav className={navbarClasses} aria-label="Navigation principale">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const ExpertiseCTA = () => {
   return (
-    <section className="py-16 md:py-20 bg-primary dark:bg-blue-900 text-white">
+    <section className="py-16 md:py-20 bg-blue-600 dark:bg-blue-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <motion.div
@@ -20,7 +20,7 @@ const ExpertiseCTA = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Besoin d&apos;une expertise similaire ?
             </h2>
-            <p className="text-lg text-white/90 mb-6">
+            <p className="text-lg text-white mb-6">
               Que vous soyez une entreprise locale ou internationale, notre équipe d&apos;experts peut vous accompagner dans vos obligations fiscales, juridiques et sociales au Mali et dans la région.
             </p>
           </motion.div>
@@ -36,7 +36,7 @@ const ExpertiseCTA = () => {
               <Button 
                 variant="outline"
                 size="lg"
-                className="w-full md:w-auto bg-white text-primary hover:bg-gray-100"
+                className="w-full md:w-auto bg-white dark:bg-gray-100 text-primary dark:text-blue-800 hover:bg-gray-100 dark:hover:bg-white shadow-md"
               >
                 Découvrir nos services
               </Button>
@@ -46,7 +46,7 @@ const ExpertiseCTA = () => {
               <Button 
                 variant="outline"
                 size="lg"
-                className="w-full md:w-auto text-white border-white hover:bg-white/10"
+                className="w-full md:w-auto text-white border-white hover:bg-white/10 dark:border-gray-100 dark:hover:bg-blue-700/50 shadow-md"
               >
                 Nous contacter <FiArrowRight className="ml-2" />
               </Button>

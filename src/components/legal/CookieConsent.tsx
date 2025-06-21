@@ -18,26 +18,49 @@ const CookieConsent = () => {
   
   useEffect(() => {
     // Check if user has already made a choice
-    const consentGiven = localStorage.getItem('cookie-consent');
-    
-    if (!consentGiven) {
-      // Show banner after a short delay
-      const timer = setTimeout(() => {
-        setShowBanner(true);
-      }, 1000);
+    try {
+      const consentGiven = localStorage.getItem('cookie-consent');
       
-      return () => clearTimeout(timer);
-    } else {
-      // Parse saved preferences
-      try {
-        const savedPreferences = JSON.parse(consentGiven);
-        setCookiePreferences(savedPreferences);
-      } catch (e) {
-        console.error('Error parsing saved cookie preferences', e);
+      if (!consentGiven) {
+        // Show banner after a short delay
+        const timer = setTimeout(() => {
+          setShowBanner(true);
+        }, 1000);
+        
+        return () => clearTimeout(timer);
+      } else {
+        // Parse saved preferences
+        try {
+          const savedPreferences = JSON.parse(consentGiven);
+          if (savedPreferences && typeof savedPreferences === 'object') {
+            setCookiePreferences(savedPreferences);
+          } else {
+            // Invalid format, reset preferences
+            throw new Error('Invalid cookie preferences format');
+          }
+        } catch (e) {
+          console.error('Error parsing saved cookie preferences', e);
+          // Reset localStorage if parsing fails
+          localStorage.removeItem('cookie-consent');
+          setShowBanner(true);
+        }
       }
+    } catch (e) {
+      // Handle case where localStorage is not available (e.g., incognito mode)
+      console.error('Error accessing localStorage', e);
     }
   }, []);
   
+  const saveToLocalStorage = (preferences: typeof cookiePreferences) => {
+    try {
+      localStorage.setItem('cookie-consent', JSON.stringify(preferences));
+      return true;
+    } catch (e) {
+      console.error('Error saving cookie preferences to localStorage', e);
+      return false;
+    }
+  };
+
   const handleAcceptAll = () => {
     const allAccepted = {
       necessary: true,
@@ -46,7 +69,7 @@ const CookieConsent = () => {
     };
     
     setCookiePreferences(allAccepted);
-    localStorage.setItem('cookie-consent', JSON.stringify(allAccepted));
+    saveToLocalStorage(allAccepted);
     setShowBanner(false);
   };
   
@@ -58,12 +81,12 @@ const CookieConsent = () => {
     };
     
     setCookiePreferences(essentialOnly);
-    localStorage.setItem('cookie-consent', JSON.stringify(essentialOnly));
+    saveToLocalStorage(essentialOnly);
     setShowBanner(false);
   };
   
   const handleSavePreferences = () => {
-    localStorage.setItem('cookie-consent', JSON.stringify(cookiePreferences));
+    saveToLocalStorage(cookiePreferences);
     setShowPreferences(false);
     setShowBanner(false);
   };

@@ -23,7 +23,7 @@ const Hero = () => {
             className="text-center md:text-left"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              <span className="text-primary dark:text-blue-400">Cabinet CBS</span>
+              <span className="text-blue-600 dark:text-blue-400">Cabinet CBS</span>
               <br />
               Votre Conseil Fiscal de Confiance
             </h1>

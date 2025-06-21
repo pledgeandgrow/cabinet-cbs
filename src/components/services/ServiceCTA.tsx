@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const ServiceCTA = () => {
   return (
-    <section className="py-16 md:py-20 bg-primary dark:bg-blue-900 text-white">
+    <section className="py-16 md:py-20 bg-blue-600 dark:bg-blue-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <motion.div
@@ -20,18 +20,18 @@ const ServiceCTA = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Besoin d&apos;une assistance personnalisée?
             </h2>
-            <p className="text-lg text-white/90 mb-6">
+            <p className="text-lg text-white mb-6">
               Notre équipe d&apos;experts est prête à vous accompagner dans tous vos projets. 
               Contactez-nous dès aujourd&apos;hui pour discuter de vos besoins spécifiques.
             </p>
             
             <div className="space-y-4">
               <div className="flex items-center">
-                <FiPhone className="h-5 w-5 mr-3" />
+                <FiPhone className="h-5 w-5 mr-3 text-white dark:text-blue-200" />
                 <span>+223 76 88 18 76 / 62 68 70 13</span>
               </div>
               <div className="flex items-center">
-                <FiMail className="h-5 w-5 mr-3" />
+                <FiMail className="h-5 w-5 mr-3 text-white dark:text-blue-200" />
                 <span>bousid@yahoo.fr</span>
               </div>
             </div>
@@ -44,7 +44,7 @@ const ServiceCTA = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md border border-gray-100 dark:border-gray-700">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 Prendre rendez-vous
               </h3>
@@ -53,7 +53,7 @@ const ServiceCTA = () => {
                 <Button 
                   variant="primary"
                   size="lg"
-                  className="w-full"
+                  className="w-full shadow-md"
                 >
                   Contactez-nous
                 </Button>
