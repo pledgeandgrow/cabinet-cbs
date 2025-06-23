@@ -38,12 +38,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     // Use ripple effect hook
     const { createRipple } = useRippleEffect({
-      color: rippleColor || (variant === 'primary' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(37, 99, 235, 0.3)'),
+      color: rippleColor || (variant === 'primary' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(124, 58, 237, 0.3)'),
       duration: rippleDuration || 600,
     });
 
     // Base button styles
-    const baseStyles = 'relative inline-flex items-center justify-center font-medium rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed overflow-hidden';
+    const baseStyles = 'relative inline-flex items-center justify-center font-medium rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-700 disabled:opacity-60 disabled:cursor-not-allowed overflow-hidden';
 
     // Size styles
     const sizeStyles = {
@@ -54,11 +54,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     // Variant styles
     const variantStyles = {
-      primary: 'bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-600 dark:hover:bg-blue-700 shadow-sm',
-      secondary: 'bg-gray-600 hover:bg-gray-700 text-white dark:bg-gray-700 dark:hover:bg-gray-800 shadow-sm',
-      outline: 'border border-gray-300 dark:border-gray-600 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200',
-      ghost: 'bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200',
-      link: 'bg-transparent underline-offset-4 hover:underline text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 p-0 shadow-none',
+      primary: 'bg-violet-700 hover:bg-violet-800 text-white shadow-sm',
+      secondary: 'bg-gray-600 hover:bg-gray-700 text-white shadow-sm',
+      outline: 'border border-gray-300 bg-transparent hover:bg-gray-100 text-gray-700',
+      ghost: 'bg-transparent hover:bg-gray-100 text-gray-700',
+      link: 'bg-transparent underline-offset-4 hover:underline text-violet-700 hover:text-violet-800 p-0 shadow-none',
     };
 
     // Width style

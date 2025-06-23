@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui';
-import { FiSend, FiCheck } from 'react-icons/fi';
+import { FiSend, FiCheck, FiUser, FiMail, FiPhone, FiBriefcase, FiMessageSquare, FiHelpCircle } from 'react-icons/fi';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -88,54 +87,87 @@ const ContactForm = () => {
   };
   
   return (
-    <section className="py-12 md:py-16 bg-white dark:bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact-form" className="py-12 md:py-16 bg-white relative overflow-hidden">
+      {/* Éléments décoratifs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-violet-50 rounded-full opacity-70 blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-violet-50 rounded-full opacity-70 blur-3xl"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+            className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100"
           >
-            <div className="p-6 md:p-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Envoyez-nous un message
-              </h2>
+            <div className="p-8 md:p-10">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 rounded-full bg-violet-100 flex items-center justify-center mr-4">
+                  <FiMessageSquare className="h-6 w-6 text-violet-600" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-700 to-violet-500">
+                  Envoyez-nous un message
+                </h2>
+              </div>
+              
+              <p className="text-gray-600 mb-8 pl-16">
+                Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
+              </p>
               
               {formStatus.isSubmitted ? (
-                <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                <motion.div 
+                  className="bg-green-50 p-4 rounded-xl mb-8 border border-green-100 shadow-sm"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <FiCheck className="h-5 w-5 text-green-500 dark:text-green-400" />
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                      <FiCheck className="h-5 w-5 text-green-600" />
                     </div>
-                    <div className="ml-3">
-                      <p className="text-sm font-medium text-green-800 dark:text-green-200">
+                    <div className="ml-4">
+                      <h3 className="text-lg font-medium text-green-800">Message envoyé !</h3>
+                      <p className="text-green-700 mt-1">
                         Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ) : null}
               
               {formStatus.error ? (
-                <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg mb-6">
-                  <div className="flex">
-                    <div className="ml-3">
-                      <p className="text-sm font-medium text-red-800 dark:text-red-200">
+                <motion.div 
+                  className="bg-red-50 p-4 rounded-xl mb-8 border border-red-100 shadow-sm"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+                      <FiHelpCircle className="h-5 w-5 text-red-600" />
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="text-lg font-medium text-red-800">Erreur</h3>
+                      <p className="text-red-700 mt-1">
                         {formStatus.error}
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ) : null}
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      Nom complet *
-                    </label>
+                  <div className="relative">
+                    <div className="flex items-center mb-2">
+                      <FiUser className="text-violet-500 mr-2" />
+                      <label htmlFor="name" className="text-sm font-medium text-gray-700">
+                        Nom complet *
+                      </label>
+                    </div>
                     <input
                       type="text"
                       id="name"
@@ -143,15 +175,18 @@ const ContactForm = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg shadow-sm focus:ring-2 focus:ring-violet-300 focus:border-violet-500 transition-all duration-200"
                       placeholder="Votre nom"
                     />
                   </div>
                   
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      Email *
-                    </label>
+                  <div className="relative">
+                    <div className="flex items-center mb-2">
+                      <FiMail className="text-violet-500 mr-2" />
+                      <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                        Email *
+                      </label>
+                    </div>
                     <input
                       type="email"
                       id="email"
@@ -159,70 +194,78 @@ const ContactForm = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg shadow-sm focus:ring-2 focus:ring-violet-300 focus:border-violet-500 transition-all duration-200"
                       placeholder="votre@email.com"
                     />
                   </div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      Entreprise
-                    </label>
+                  
+                  <div className="relative">
+                    <div className="flex items-center mb-2">
+                      <FiBriefcase className="text-violet-500 mr-2" />
+                      <label htmlFor="company" className="text-sm font-medium text-gray-700">
+                        Entreprise
+                      </label>
+                    </div>
                     <input
                       type="text"
                       id="company"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg shadow-sm focus:ring-2 focus:ring-violet-300 focus:border-violet-500 transition-all duration-200"
                       placeholder="Nom de votre entreprise"
                     />
                   </div>
                   
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      Téléphone
-                    </label>
+                  <div className="relative">
+                    <div className="flex items-center mb-2">
+                      <FiPhone className="text-violet-500 mr-2" />
+                      <label htmlFor="phone" className="text-sm font-medium text-gray-700">
+                        Téléphone
+                      </label>
+                    </div>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg shadow-sm focus:ring-2 focus:ring-violet-300 focus:border-violet-500 transition-all duration-200"
                       placeholder="+223 XX XX XX XX"
                     />
                   </div>
                 </div>
                 
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Sujet *
-                  </label>
+                <div className="relative">
+                  <div className="flex items-center mb-2">
+                    <FiHelpCircle className="text-violet-500 mr-2" />
+                    <label htmlFor="subject" className="text-sm font-medium text-gray-700">
+                      Sujet *
+                    </label>
+                  </div>
                   <select
                     id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg shadow-sm focus:ring-2 focus:ring-violet-300 focus:border-violet-500 transition-all duration-200 bg-white"
                   >
                     <option value="">Sélectionnez un sujet</option>
-                    <option value="Demande d'information">Demande d&apos;information</option>
-                    <option value="Demande de devis">Demande de devis</option>
-                    <option value="Assistance fiscale">Assistance fiscale</option>
-                    <option value="Assistance juridique">Assistance juridique</option>
-                    <option value="Assistance sociale">Assistance sociale</option>
-                    <option value="Autre">Autre</option>
+                    <option value="consultation">Demande de consultation</option>
+                    <option value="information">Demande d&apos;information</option>
+                    <option value="devis">Demande de devis</option>
+                    <option value="autre">Autre</option>
                   </select>
                 </div>
                 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Message *
-                  </label>
+                <div className="relative">
+                  <div className="flex items-center mb-2">
+                    <FiMessageSquare className="text-violet-500 mr-2" />
+                    <label htmlFor="message" className="text-sm font-medium text-gray-700">
+                      Message *
+                    </label>
+                  </div>
                   <textarea
                     id="message"
                     name="message"
@@ -230,18 +273,16 @@ const ContactForm = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg shadow-sm focus:ring-2 focus:ring-violet-300 focus:border-violet-500 transition-all duration-200"
                     placeholder="Votre message..."
                   ></textarea>
                 </div>
                 
                 <div className="flex justify-end">
-                  <Button
+                  <button
                     type="submit"
-                    variant="primary"
-                    size="lg"
                     disabled={formStatus.isSubmitting}
-                    className="w-full md:w-auto"
+                    className={`btn-modern ${formStatus.isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                   >
                     {formStatus.isSubmitting ? (
                       <>
@@ -253,10 +294,11 @@ const ContactForm = () => {
                       </>
                     ) : (
                       <>
-                        <FiSend className="mr-2" /> Envoyer
+                        <FiSend className="mr-2" />
+                        Envoyer le message
                       </>
                     )}
-                  </Button>
+                  </button>
                 </div>
               </form>
             </div>

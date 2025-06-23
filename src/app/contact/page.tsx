@@ -16,12 +16,19 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main>
+    <main className="overflow-hidden">
       <ContactHero />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <ContactForm />
-        <ContactInfo />
+      
+      {/* Section formulaire et informations de contact */}
+      <div className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+            <ContactForm />
+            <ContactInfo />
+          </div>
+        </div>
       </div>
+      
       <ContactMap />
       <ContactFAQ />
     </main>

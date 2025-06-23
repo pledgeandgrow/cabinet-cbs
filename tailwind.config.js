@@ -5,28 +5,23 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        'primary': '#1E3A8A',
-        'secondary': '#2563EB',
-        'tertiary': '#93C5FD',
-        'light': '#EFF6FF',
-        'primary-dark': '#172554',
-        'secondary-dark': '#1D4ED8',
-        'tertiary-light': '#BFDBFE',
+        'primary': '#6D28D9', // Violet-700
+        'primary-light': '#EDE9FE', // Violet-100
+        'secondary': '#8B5CF6', // Violet-500
+        'tertiary': '#C4B5FD', // Violet-300
+        'accent': '#4C1D95', // Violet-900
+        'light': '#F5F3FF', // Violet-50
       },
       backgroundColor: {
-        'dark': '#0a0a0a',
         'light': '#ffffff',
       },
       textColor: {
-        'dark': '#ededed',
         'light': '#171717',
       },
       borderColor: {
-        'dark': '#374151',
         'light': '#e5e7eb',
       },
     },

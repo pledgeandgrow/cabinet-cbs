@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiCheckCircle, FiFileText, FiUsers, FiShield, FiDatabase } from 'react-icons/fi';
+import { FiCheckCircle, FiFileText, FiUsers, FiShield, FiDatabase, FiArrowRight } from 'react-icons/fi';
 import { IconType } from 'react-icons';
+import Link from 'next/link';
 
 // Animation variants
 const containerVariants = {
@@ -17,12 +18,21 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 }
+    transition: { duration: 0.6 }
   }
+};
+
+const listItemVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: (custom: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.4, delay: custom * 0.1 }
+  })
 };
 
 // Define interfaces for props
@@ -37,26 +47,44 @@ interface ServiceCategoryProps {
 const ServiceCategory = ({ title, description, icon: Icon, services }: ServiceCategoryProps) => {
   return (
     <motion.div 
-      className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 md:p-8 border border-gray-100 dark:border-gray-700"
+      className="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-gray-100 hover:border-violet-200 transition-all duration-300 hover:shadow-xl group relative overflow-hidden"
       variants={itemVariants}
     >
-      <div className="flex items-center mb-4">
-        <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full mr-4 shadow-sm">
-          <Icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+      {/* Élément décoratif en arrière-plan */}
+      <div className="absolute -right-10 -top-10 w-40 h-40 bg-violet-50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+      
+      <div className="relative z-10">
+        <div className="flex items-center mb-6">
+          <div className="bg-gradient-to-br from-violet-100 to-violet-50 p-4 rounded-xl mr-4 shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:scale-110">
+            <Icon className="h-7 w-7 text-violet-600" />
+          </div>
+          <h3 className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-800 to-violet-600">{title}</h3>
         </div>
-        <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">{title}</h3>
+        
+        <p className="text-gray-600 mb-8 leading-relaxed">{description}</p>
+        
+        <ul className="space-y-4">
+          {services.map((service, index) => (
+            <motion.li 
+              key={index} 
+              className="flex items-start group/item"
+              variants={listItemVariants}
+              custom={index}
+            >
+              <div className="bg-violet-100 rounded-full p-1 mr-3 flex-shrink-0 group-hover/item:bg-violet-200 transition-colors duration-300">
+                <FiCheckCircle className="h-4 w-4 text-violet-600" />
+              </div>
+              <span className="text-gray-700">{service}</span>
+            </motion.li>
+          ))}
+        </ul>
+        
+        <div className="mt-8 pt-6 border-t border-gray-100 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <Link href="/contact" className="text-violet-600 font-medium flex items-center hover:text-violet-800 transition-colors">
+            En savoir plus <FiArrowRight className="ml-2" />
+          </Link>
+        </div>
       </div>
-      
-      <p className="text-gray-600 dark:text-gray-300 mb-6">{description}</p>
-      
-      <ul className="space-y-3">
-        {services.map((service, index) => (
-          <li key={index} className="flex items-start">
-            <FiCheckCircle className="h-5 w-5 text-primary dark:text-blue-400 mt-0.5 mr-2 flex-shrink-0" />
-            <span className="text-gray-700 dark:text-gray-200">{service}</span>
-          </li>
-        ))}
-      </ul>
     </motion.div>
   );
 };
@@ -120,23 +148,52 @@ const ServiceList = () => {
   ];
 
   return (
-    <section id="services-detail" className="py-16 md:py-24 bg-white dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+    <section id="services-detail" className="py-16 md:py-28 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      {/* Éléments décoratifs */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full bg-violet-50/70 blur-3xl"></div>
+        <div className="absolute bottom-1/3 left-0 w-80 h-80 rounded-full bg-violet-100/50 blur-3xl"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16 md:mb-20">
+          <motion.span 
+            className="inline-block px-4 py-1.5 bg-violet-100 text-violet-800 rounded-full text-sm font-medium tracking-wide mb-4"
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            Expertise & Solutions
+          </motion.span>
+          
+          <motion.h2 
+            className="text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-800 to-violet-600 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
             Nos Prestations
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          </motion.h2>
+          
+          <motion.p 
+            className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             Découvrez notre gamme complète de services professionnels adaptés à vos besoins spécifiques.
-          </p>
+          </motion.p>
         </div>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           {serviceCategories.map((category, index) => (
             <ServiceCategory 
@@ -147,6 +204,19 @@ const ServiceList = () => {
               services={category.services}
             />
           ))}
+        </motion.div>
+        
+        <motion.div 
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <Link href="/contact" className="btn-modern btn-lg inline-flex items-center">
+            Demander un devis personnalisé
+            <FiArrowRight className="ml-2" />
+          </Link>
         </motion.div>
       </div>
     </section>

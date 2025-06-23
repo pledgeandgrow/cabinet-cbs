@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme/theme-provider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SkipToContent from "@/components/layout/SkipToContent";
@@ -37,23 +36,21 @@ export default function RootLayout({
         <SchemaOrg />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900 transition-colors duration-300`}
         suppressHydrationWarning
       >
-        <ThemeProvider>
-          <AccessibilityEnhancements />
-          <div className="flex min-h-screen flex-col">
-            <SkipToContent />
-            <Navbar />
-            {/* Spacer to prevent content from overlapping with fixed navbar */}
-            <div className="h-24 md:h-28"></div>
-            <main id="main-content" className="flex-1" tabIndex={-1}>
-              {children}
-            </main>
-            <Footer />
-          </div>
-          <CookieConsent />
-        </ThemeProvider>
+        <AccessibilityEnhancements />
+        <div className="flex min-h-screen flex-col">
+          <SkipToContent />
+          <Navbar />
+          {/* Spacer to prevent content from overlapping with fixed navbar */}
+          <div className="h-24 md:h-28"></div>
+          <main id="main-content" className="flex-1" tabIndex={-1}>
+            {children}
+          </main>
+          <Footer />
+        </div>
+        <CookieConsent />
       </body>
     </html>
   );
