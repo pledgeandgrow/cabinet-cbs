@@ -2,121 +2,126 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FiArrowRight, FiMail, FiMessageSquare, FiPhoneCall } from 'react-icons/fi';
 import Link from 'next/link';
-import { FiArrowRight, FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
-const AboutCTA = () => {
+const ServiceCTA = () => {
   return (
-    <section className="py-16 md:py-28 relative overflow-hidden">
-      {/* Arrière-plan dégradé */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-600 to-violet-800 opacity-95"></div>
-      
+    <section className="py-16 md:py-24 bg-gradient-to-br from-violet-700 to-violet-900 text-white relative overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white rounded-full opacity-5 blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('/pattern-dot.svg')] opacity-5"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-white"
+            className="max-w-xl"
           >
             <motion.span 
-              className="inline-block px-4 py-1.5 bg-white/20 text-white rounded-full text-sm font-medium tracking-wide mb-4"
+              className="inline-block px-4 py-1.5 bg-white/10 text-white rounded-full text-sm font-medium tracking-wide mb-4"
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
               Prêts à vous accompagner
             </motion.span>
             
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               Une équipe d&apos;experts à votre service
             </h2>
             
             <p className="text-lg text-white/90 mb-8 leading-relaxed">
-              Besoin d&apos;un accompagnement fiscal, juridique ou en ressources humaines ? 
-              Notre équipe pluridisciplinaire est composée d&apos;experts reconnus dans leur domaine, 
-              prêts à mettre leur expérience et leur savoir-faire à votre service.
+              Nous sommes à votre écoute pour vous accompagner dans vos démarches fiscales, juridiques et sociales. N&apos;hésitez pas à nous contacter pour échanger sur vos besoins. Prenez rendez-vous avec l&apos;un de nos experts.
             </p>
             
-            <div className="space-y-4 mb-8">
-              <div className="flex items-center">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4">
-                  <FiMapPin className="text-white" />
+            {/* <div className="space-y-5 mb-8">
+              <motion.div 
+                className="flex items-center group"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="bg-white/10 p-3 rounded-full mr-4 group-hover:bg-white/20 transition-colors duration-300">
+                  <FiPhone className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-white">Hamdallaye ACI 2000, Bamako, Mali</span>
-              </div>
+                <span className="text-lg">+223 76 88 18 76 / 62 68 70 13</span>
+              </motion.div>
               
-              <div className="flex items-center">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4">
-                  <FiPhone className="text-white" />
+              <motion.div 
+                className="flex items-center group"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <div className="bg-white/10 p-3 rounded-full mr-4 group-hover:bg-white/20 transition-colors duration-300">
+                  <FiMail className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-white">+223 20 00 00 00</span>
-              </div>
-              
-              <div className="flex items-center">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4">
-                  <FiMail className="text-white" />
-                </div>
-                <span className="text-white">contact@cabinet-cbs.com</span>
-              </div>
-            </div>
+                <span className="text-lg">bousid@yahoo.fr</span>
+              </motion.div>
+            </div> */}
             
-            <Link href="/contact" className="btn-modern btn-lg inline-flex items-center bg-white text-violet-700 hover:text-violet-800">
-              Contactez-nous
-              <FiArrowRight className="ml-2" />
-            </Link>
+            {/* <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <Link href="/contact" className="btn-modern btn-white btn-lg inline-flex items-center">
+                Nous contacter
+                <FiArrowRight className="ml-2" />
+              </Link>
+            </motion.div> */}
           </motion.div>
           
           <motion.div
-            className="lg:ml-auto"
+            className="flex justify-center lg:justify-end"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white rounded-xl shadow-xl p-8 md:p-10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-violet-100 rounded-full opacity-70 blur-xl -mr-16 -mt-16"></div>
+            <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md border border-violet-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <FiMail className="mr-3 text-violet-600" />
+                Contactez-nous
+              </h3>
               
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 relative z-10">Prendre rendez-vous</h3>
-              
-              <p className="text-gray-600 mb-8 relative z-10">
-                Remplissez le formulaire de contact ou appelez-nous directement pour organiser une consultation avec nos experts.
-              </p>
-              
-              <div className="space-y-4 mb-6 relative z-10">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center mr-4">
-                    <FiPhone className="text-violet-600" />
-                  </div>
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start p-4 bg-violet-50 rounded-xl">
+                  <FiMessageSquare className="h-6 w-6 text-violet-600 mt-1 mr-3 flex-shrink-0" />
                   <div>
-                    <p className="text-sm text-gray-500">Appelez-nous</p>
-                    <p className="font-medium text-gray-900">+223 20 00 00 00</p>
+                    <h4 className="font-medium text-gray-900 mb-1">Réponse rapide garantie</h4>
+                    <p className="text-gray-600 text-sm">Notre équipe vous répondra dans les plus brefs délais</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center mr-4">
-                    <FiMail className="text-violet-600" />
-                  </div>
+                <div className="flex items-start p-4 bg-violet-50 rounded-xl">
+                  <FiPhoneCall className="h-6 w-6 text-violet-600 mt-1 mr-3 flex-shrink-0" />
                   <div>
-                    <p className="text-sm text-gray-500">Écrivez-nous</p>
-                    <p className="font-medium text-gray-900">contact@cabinet-cbs.com</p>
+                    <h4 className="font-medium text-gray-900 mb-1">+223 76 88 18 76</h4>
+                    <p className="text-gray-600 text-sm">Disponible du lundi au vendredi, 8h-17h</p>
                   </div>
                 </div>
               </div>
               
-              <Link href="/contact" className="btn-modern btn-outline w-full justify-center">
-                Formulaire de contact
+              <Link href="/contact" className="btn-modern w-full flex justify-center items-center group">
+                Nous contacter
+                <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
+              
+              <p className="text-gray-500 text-sm mt-6 text-center">
+                Ou par email : <span className="text-violet-600 font-medium">contact@cabinet-cbs.com</span>
+              </p>
             </div>
           </motion.div>
         </div>
@@ -125,4 +130,4 @@ const AboutCTA = () => {
   );
 };
 
-export default AboutCTA;
+export default ServiceCTA;

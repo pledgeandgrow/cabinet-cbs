@@ -1,22 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FiMapPin, FiPhone, FiMail, FiLinkedin, FiFacebook, FiTwitter, FiInstagram, FiSend, FiArrowRight, FiChevronUp } from 'react-icons/fi';
+import { FiMapPin, FiPhone, FiMail, FiLinkedin, FiFacebook, FiTwitter, FiInstagram, FiArrowRight, FiChevronUp } from 'react-icons/fi';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState('');
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Logique d'inscription à la newsletter
-    console.log('Email soumis:', email);
-    setEmail('');
-    // Ici vous pourriez ajouter une notification de succès
-  };
   
   const scrollToTop = () => {
     window.scrollTo({
@@ -39,7 +30,7 @@ const Footer = () => {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-600/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="flex flex-col md:flex-row md:justify-between gap-8 lg:gap-12">
           {/* Company Info */}
           <motion.div 
             initial="hidden"
@@ -47,7 +38,7 @@ const Footer = () => {
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeInUp}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:col-span-2"
+            className="md:w-1/2"
           >
             <div className="flex items-center mb-6">
               <div className="relative h-20 w-44 mr-4 group">
@@ -89,6 +80,7 @@ const Footer = () => {
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeInUp}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="md:w-1/2"
           >
             <h3 className="text-xl font-bold mb-5 relative inline-block">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-violet-300">Contact</span>
@@ -145,6 +137,7 @@ const Footer = () => {
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeInUp}
             transition={{ duration: 0.5, delay: 0.3 }}
+            className="md:col-span-1"
           >
             <h3 className="text-xl font-bold mb-5 relative inline-block">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-violet-300">Liens Rapides</span>
@@ -204,49 +197,7 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Newsletter */}
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeInUp}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="lg:col-span-1"
-          >
-            <h3 className="text-xl font-bold mb-5 relative inline-block">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-violet-300">Newsletter</span>
-              <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-violet-500"></span>
-            </h3>
-            <p className="text-gray-300 mb-4">
-              Inscrivez-vous pour recevoir nos dernières actualités et conseils fiscaux.
-            </p>
-            
-            <form onSubmit={handleSubmit} className="relative">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Votre email"
-                required
-                className="w-full px-4 py-3 bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-700/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
-              />
-              <button 
-                type="submit" 
-                className="btn-modern btn-sm absolute right-1.5 top-1.5 !py-1.5 !px-3 flex items-center justify-center"
-                aria-label="S'inscrire à la newsletter"
-              >
-                <FiSend className="mr-1" />
-                <span>OK</span>
-              </button>
-            </form>
-            
-            <p className="text-gray-400 text-xs mt-3">
-              En vous inscrivant, vous acceptez notre{" "}
-              <Link href="/politique-de-confidentialite" className="text-violet-400 hover:underline">
-                politique de confidentialité
-              </Link>
-            </p>
-          </motion.div>
+          {/* Troisième colonne supprimée */}
         </div>
 
         {/* Back to top button */}

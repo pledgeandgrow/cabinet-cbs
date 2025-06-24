@@ -54,19 +54,29 @@ const ServiceHero = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <a href="#services-detail" className="btn-modern btn-lg btn-icon-right">
+            <a 
+              href="#services-detail" 
+              className="btn-modern btn-lg btn-icon-right group"
+              onClick={(e) => {
+                e.preventDefault();
+                const servicesSection = document.getElementById('services-detail');
+                if (servicesSection) {
+                  servicesSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
               Découvrir nos prestations
-              <FiArrowRight className="ml-2" />
+              <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
             
-            <Link href="/contact" className="btn-modern btn-outline btn-lg">
+            <Link href="/contact?subject=devis" className="btn-modern btn-outline btn-lg">
               Nous contacter
             </Link>
           </motion.div>
         </div>
         
         {/* Indicateur de défilement */}
-        <motion.div 
+        {/* <motion.div 
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -74,7 +84,7 @@ const ServiceHero = () => {
         >
           <span className="text-sm text-gray-500 mb-2">Découvrir</span>
           <div className="w-0.5 h-8 bg-gradient-to-b from-violet-500 to-transparent animate-pulse"></div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiArrowRight, FiCalendar, FiMessageSquare } from 'react-icons/fi';
+import { FiArrowRight, FiMessageSquare, FiMail, FiPhoneCall } from 'react-icons/fi';
 import Link from 'next/link';
 
 const ServiceCTA = () => {
@@ -43,7 +43,7 @@ const ServiceCTA = () => {
               Contactez-nous dès aujourd&apos;hui pour discuter de vos besoins spécifiques.
             </p>
             
-            <div className="space-y-5 mb-8">
+            {/* <div className="space-y-5 mb-8">
               <motion.div 
                 className="flex items-center group"
                 initial={{ opacity: 0, x: -20 }}
@@ -69,19 +69,19 @@ const ServiceCTA = () => {
                 </div>
                 <span className="text-lg">bousid@yahoo.fr</span>
               </motion.div>
-            </div>
+            </div> */}
             
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <Link href="/contact" className="btn-modern btn-white btn-lg inline-flex items-center">
+              <Link href="/contact?subject=devis" className="btn-modern btn-white btn-lg inline-flex items-center">
                 Nous contacter
                 <FiArrowRight className="ml-2" />
               </Link>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
           
           <motion.div
@@ -93,26 +93,35 @@ const ServiceCTA = () => {
           >
             <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md border border-violet-100">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <FiCalendar className="mr-3 text-violet-600" />
-                Prendre rendez-vous
+                <FiMail className="mr-3 text-violet-600" />
+                Contactez-nous
               </h3>
               
-              <div className="space-y-6 mb-6">
+              <div className="space-y-4 mb-6">
                 <div className="flex items-start p-4 bg-violet-50 rounded-xl">
                   <FiMessageSquare className="h-6 w-6 text-violet-600 mt-1 mr-3 flex-shrink-0" />
                   <div>
-                    <h4 className="font-medium text-gray-900 mb-1">Consultation initiale gratuite</h4>
-                    <p className="text-gray-600 text-sm">Découvrez comment nous pouvons vous aider lors d&apos;un premier échange sans engagement</p>
+                    <h4 className="font-medium text-gray-900 mb-1">Réponse rapide garantie</h4>
+                    <p className="text-gray-600 text-sm">Notre équipe vous répondra dans les plus brefs délais</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start p-4 bg-violet-50 rounded-xl">
+                  <FiPhoneCall className="h-6 w-6 text-violet-600 mt-1 mr-3 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-medium text-gray-900 mb-1">+223 76 88 18 76</h4>
+                    <p className="text-gray-600 text-sm">Disponible du lundi au vendredi, 8h-17h</p>
                   </div>
                 </div>
               </div>
               
-              <Link href="/contact" className="btn-modern w-full flex justify-center items-center">
-                Demander un rendez-vous
+              <Link href="/contact?subject=devis" className="btn-modern w-full flex justify-center items-center group">
+                Nous contacter
+                <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
               
               <p className="text-gray-500 text-sm mt-6 text-center">
-                Nous vous répondrons dans les 24 heures ouvrées
+                Ou par email : <span className="text-violet-600 font-medium">contact@cabinet-cbs.com</span>
               </p>
             </div>
           </motion.div>

@@ -1,10 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { FiSend, FiCheck, FiUser, FiMail, FiPhone, FiBriefcase, FiMessageSquare, FiHelpCircle } from 'react-icons/fi';
 
 const ContactForm = () => {
+  const searchParams = useSearchParams();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,6 +16,17 @@ const ContactForm = () => {
     subject: '',
     message: ''
   });
+  
+  // Récupérer le sujet depuis l'URL au chargement du composant
+  useEffect(() => {
+    const subjectParam = searchParams.get('subject');
+    if (subjectParam) {
+      setFormData(prev => ({
+        ...prev,
+        subject: subjectParam === 'devis' ? 'devis' : prev.subject
+      }));
+    }
+  }, [searchParams]);
   
   const [formStatus, setFormStatus] = useState({
     isSubmitting: false,
@@ -87,33 +101,25 @@ const ContactForm = () => {
   };
   
   return (
-    <section id="contact-form" className="py-12 md:py-16 bg-white relative overflow-hidden">
-      {/* Éléments décoratifs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-violet-50 rounded-full opacity-70 blur-3xl"></div>
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-violet-50 rounded-full opacity-70 blur-3xl"></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100"
-          >
-            <div className="p-8 md:p-10">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 rounded-full bg-violet-100 flex items-center justify-center mr-4">
-                  <FiMessageSquare className="h-6 w-6 text-violet-600" />
+    <div className="h-full">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100 h-full"
+      >
+            <div className="p-6 md:p-8">
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center mr-3">
+                  <FiMessageSquare className="h-5 w-5 text-violet-600" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-700 to-violet-500">
+                <h2 className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-700 to-violet-500">
                   Envoyez-nous un message
                 </h2>
               </div>
               
-              <p className="text-gray-600 mb-8 pl-16">
+              <p className="text-gray-600 mb-6 pl-0 md:pl-14 text-sm">
                 Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
               </p>
               
@@ -302,10 +308,8 @@ const ContactForm = () => {
                 </div>
               </form>
             </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+      </motion.div>
+    </div>
   );
 };
 

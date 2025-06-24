@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiLinkedin, FiMail, FiPhone, FiArrowRight } from 'react-icons/fi';
+import { FiMail, FiLinkedin, FiPhone } from 'react-icons/fi';
 import Image from 'next/image';
 
 // Animation variants pour le conteneur
@@ -181,7 +181,7 @@ const AboutTeam = () => {
           ))}
         </motion.div>
         
-        <motion.div 
+        {/* <motion.div 
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -192,7 +192,7 @@ const AboutTeam = () => {
             Contacter notre équipe
             <FiArrowRight className="ml-2" />
           </a>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

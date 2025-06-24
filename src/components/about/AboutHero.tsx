@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiCheckCircle, FiArrowRight } from 'react-icons/fi';
-import Link from 'next/link';
 
 const AboutHero = () => {
   return (
@@ -76,10 +75,19 @@ const AboutHero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Link href="/contact" className="btn-modern btn-outline inline-flex items-center">
-                Nous contacter
-                <FiArrowRight className="ml-2" />
-              </Link>
+              <button 
+                onClick={() => {
+                  // Faire défiler vers la section AboutValues en utilisant son ID
+                  const valuesSection = document.getElementById('about-values');
+                  if (valuesSection) {
+                    valuesSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="btn-modern btn-outline inline-flex items-center group"
+              >
+                En savoir plus
+                <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
           </motion.div>
           

@@ -188,7 +188,7 @@ const Navbar = () => {
                           {/* Pied de menu avec appel à l'action */}
                           <div className="bg-gray-50 px-4 py-3 border-t border-gray-100">
                             <Link 
-                              href="/contact" 
+                              href="/contact?subject=devis" 
                               className="flex items-center justify-center text-xs text-violet-600 hover:text-violet-800 transition-colors duration-200"
                             >
                               <FiArrowRight className="mr-1 h-3 w-3" />

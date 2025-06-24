@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiChevronDown, FiChevronUp, FiHelpCircle } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { FiChevronDown } from 'react-icons/fi';
 
 const faqs = [
   {
@@ -35,92 +35,85 @@ const ContactFAQ = () => {
   };
   
   return (
-    <section className="py-12 md:py-16 bg-white relative overflow-hidden">
-      {/* Éléments décoratifs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-violet-50 rounded-full opacity-70 blur-3xl"></div>
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-violet-50 rounded-full opacity-70 blur-3xl"></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12">
-          <motion.div
-            className="inline-flex items-center justify-center mb-4 bg-violet-100 text-violet-700 px-4 py-2 rounded-full"
-            initial={{ opacity: 0, y: -20 }}
+    <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <motion.span
+            className="inline-flex items-center px-3 py-1 rounded-full bg-violet-100 text-violet-800 text-sm font-medium mb-4"
+            initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            <FiHelpCircle className="mr-2" />
-            <span className="font-medium">FAQ</span>
-          </motion.div>
+            <span className="w-2 h-2 rounded-full bg-violet-500 mr-2"></span>
+            FAQ
+          </motion.span>
           
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-700 to-violet-500"
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
             Questions fréquentes
           </motion.h2>
-          
-          <motion.p 
-            className="text-lg text-gray-600 max-w-3xl mx-auto"
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-violet-500 to-violet-700 mx-auto mb-8 rounded-full"
+            initial={{ width: 0, opacity: 0 }}
+            whileInView={{ width: 96, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          ></motion.div>
+          <motion.p
+            className="max-w-2xl mx-auto text-lg text-gray-600 mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Retrouvez les réponses aux questions les plus courantes
+            Retrouvez les réponses aux questions les plus fréquentes sur nos services.
           </motion.p>
         </div>
         
-        <div className="max-w-3xl mx-auto">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <motion.div
+            <motion.div 
               key={index}
-              className="mb-6"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:border-violet-200 transition-all duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <button
+              <button 
+                className="w-full flex justify-between items-center p-6 text-left focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-20 focus:ring-offset-2 rounded-t-2xl"
                 onClick={() => toggleFAQ(index)}
-                className={`w-full flex justify-between items-center p-5 rounded-xl text-left shadow-sm border ${openIndex === index 
-                  ? 'bg-gradient-to-r from-violet-600 to-violet-700 text-white border-violet-500' 
-                  : 'bg-white text-gray-800 hover:bg-violet-50 border-gray-100 hover:border-violet-200'
-                } transition-all duration-300`}
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-answer-${index}`}
               >
-                <span className="font-semibold text-lg">{faq.question}</span>
-                <span className="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
-                  {openIndex === index ? (
-                    <FiChevronUp className="h-5 w-5" />
-                  ) : (
-                    <FiChevronDown className="h-5 w-5" />
-                  )}
-                </span>
+                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-violet-700">{faq.question}</h3>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center bg-violet-100 transition-all duration-300 ${openIndex === index ? 'bg-violet-600' : ''}`}>
+                  <FiChevronDown 
+                    className={`h-5 w-5 transition-transform duration-300 ${openIndex === index ? 'transform rotate-180 text-white' : 'text-violet-600'}`} 
+                  />
+                </div>
               </button>
               
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    id={`faq-answer-${index}`}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-white p-6 rounded-b-xl shadow-sm border-t-0 border border-gray-100 border-t-transparent"
-                  >
-                    <p className="text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <motion.div 
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ 
+                  height: openIndex === index ? 'auto' : 0,
+                  opacity: openIndex === index ? 1 : 0
+                }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+                id={`faq-answer-${index}`}
+              >
+                <div className="px-6 pb-6 pt-2">
+                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

@@ -50,7 +50,7 @@ const values = [
 
 const AboutValues = () => {
   return (
-    <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+    <section id="about-values" className="py-16 md:py-24 bg-white relative overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-20 -left-20 w-72 h-72 bg-violet-50 rounded-full opacity-70 blur-3xl"></div>

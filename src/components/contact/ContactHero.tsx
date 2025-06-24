@@ -2,12 +2,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
-import Link from 'next/link';
 
 const ContactHero = () => {
   return (
-    <section className="relative bg-white py-16 md:py-28 overflow-hidden">
+    <section className="relative bg-white pt-16 pb-0 md:pt-28 md:pb-0 overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Ligne de dégradé en haut */}
@@ -46,7 +44,7 @@ const ContactHero = () => {
             Nous sommes à votre disposition pour répondre à vos questions et vous accompagner dans vos démarches fiscales, juridiques et sociales.
           </motion.p>
           
-          <motion.div
+          {/* <motion.div
             className="flex flex-wrap justify-center gap-4 mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,9 +56,9 @@ const ContactHero = () => {
             <Link href="tel:+22320000000" className="btn-modern btn-outline btn-lg">
               Nous appeler
             </Link>
-          </motion.div>
+          </motion.div> */}
           
-          <motion.div 
+          {/* <motion.div 
             className="flex flex-wrap justify-center gap-8 mt-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -86,7 +84,7 @@ const ContactHero = () => {
               </div>
               <span className="text-gray-700">Hamdallaye ACI 2000, Bamako</span>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

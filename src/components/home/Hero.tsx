@@ -75,8 +75,15 @@ const Hero = () => {
                 <FiArrowRight />
               </a>
               <a 
-                href="/services" 
+                href="#services" 
                 className="btn-modern btn-lg btn-white"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const servicesSection = document.getElementById('services');
+                  if (servicesSection) {
+                    servicesSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 Nos services
               </a>
@@ -125,13 +132,13 @@ const Hero = () => {
                 
                 <div className="p-4 bg-violet-50 rounded-lg mb-4 w-full">
                   <p className="text-gray-700 font-medium">
-                    Arrêté N°0826/MEF-SG du 21 Mars 2014
+                    Plus de 10 ans d&apos;expérience au service des entreprises et administrations
                   </p>
                 </div>
                 
                 <div className="p-4 bg-violet-50 rounded-lg w-full">
                   <p className="text-gray-700 font-medium">
-                    NIF: 084121301X
+                  Une équipe de spécialistes à votre écoute
                   </p>
                 </div>
                 

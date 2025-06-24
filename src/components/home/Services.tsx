@@ -38,10 +38,7 @@ const ServiceCard = ({ icon, title, description, delay, index }: ServiceCardProp
       
       <p className="text-gray-600 leading-relaxed mb-6">{description}</p>
       
-      <div className="flex items-center text-violet-600 font-medium text-sm opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-        <span>En savoir plus</span>
-        <FiArrowRight className="ml-2" />
-      </div>
+
     </motion.div>
   );
 };
@@ -75,7 +72,7 @@ const Services = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-br from-white via-violet-50/30 to-white py-20 md:py-32 relative overflow-hidden">
+    <section id="services" className="bg-gradient-to-br from-white via-violet-50/30 to-white py-20 md:py-32 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-40 left-0 w-72 h-72 bg-violet-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10" />
       <div className="absolute bottom-20 right-10 w-72 h-72 bg-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10" />

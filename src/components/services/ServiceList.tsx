@@ -41,10 +41,11 @@ interface ServiceCategoryProps {
   description: string;
   icon: IconType;
   services: string[];
+  slug: string; // Slug pour l'URL de redirection
 }
 
 // Service category component
-const ServiceCategory = ({ title, description, icon: Icon, services }: ServiceCategoryProps) => {
+const ServiceCategory = ({ title, description, icon: Icon, services, slug }: ServiceCategoryProps) => {
   return (
     <motion.div 
       className="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-gray-100 hover:border-violet-200 transition-all duration-300 hover:shadow-xl group relative overflow-hidden"
@@ -80,8 +81,11 @@ const ServiceCategory = ({ title, description, icon: Icon, services }: ServiceCa
         </ul>
         
         <div className="mt-8 pt-6 border-t border-gray-100 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <Link href="/contact" className="text-violet-600 font-medium flex items-center hover:text-violet-800 transition-colors">
-            En savoir plus <FiArrowRight className="ml-2" />
+          <Link 
+            href={`/expertise/${slug}`} 
+            className="text-violet-600 font-medium flex items-center hover:text-violet-800 transition-colors group/link"
+          >
+            En savoir plus <FiArrowRight className="ml-2 group-hover/link:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>
@@ -95,6 +99,7 @@ const ServiceList = () => {
       title: "Assistance Fiscale",
       description: "Nous vous accompagnons dans toutes vos obligations fiscales et optimisons votre situation.",
       icon: FiFileText,
+      slug: "fiscalite",
       services: [
         "Préparation des déclarations mensuelles d'impôts et taxes",
         "Calcul et vérification des impôts (ITS-TL, IRF, I/BIC)",
@@ -108,21 +113,23 @@ const ServiceList = () => {
     },
     {
       title: "Assistance Juridique",
-      description: "Notre expertise juridique vous aide à sécuriser vos activités et transactions.",
+      description: "Notre expertise en droit des affaires vous garantit un accompagnement juridique solide et fiable.",
       icon: FiShield,
+      slug: "droit-des-affaires",
       services: [
-        "Examen de documents juridiques et contractuels",
-        "Rédaction d'actes judiciaires et extra-judiciaires",
-        "Assistance dans les démarches contractuelles et contentieuses",
-        "Assistance dans les négociations avec des tiers",
-        "Obtention des visas de l'inspection du travail",
-        "Veille juridique sur les nouveaux textes législatifs"
+        "Rédaction et révision des contrats commerciaux",
+        "Création et modification des sociétés",
+        "Secrétariat juridique des sociétés",
+        "Assistance lors des assemblées générales",
+        "Conseil en droit des sociétés et droit commercial",
+        "Accompagnement dans les opérations de restructuration"
       ]
     },
     {
       title: "Gestion des Ressources Humaines",
-      description: "Nous prenons en charge la gestion administrative de votre personnel.",
+      description: "Nous vous aidons à optimiser la gestion de votre personnel dans le respect de la législation.",
       icon: FiUsers,
+      slug: "ressources-humaines",
       services: [
         "Établissement des contrats de travail",
         "Établissement des bulletins de salaires",
@@ -136,6 +143,7 @@ const ServiceList = () => {
       title: "Externalisation Comptable",
       description: "Confiez-nous votre comptabilité pour vous concentrer sur votre cœur de métier.",
       icon: FiDatabase,
+      slug: "audit",
       services: [
         "Tenue de la comptabilité",
         "Établissement des états financiers",
@@ -202,22 +210,23 @@ const ServiceList = () => {
               description={category.description}
               icon={category.icon}
               services={category.services}
+              slug={category.slug}
             />
           ))}
         </motion.div>
         
-        <motion.div 
+        {/* <motion.div 
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <Link href="/contact" className="btn-modern btn-lg inline-flex items-center">
+          <Link href="/contact?subject=devis" className="btn-modern btn-lg inline-flex items-center">
             Demander un devis personnalisé
             <FiArrowRight className="ml-2" />
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

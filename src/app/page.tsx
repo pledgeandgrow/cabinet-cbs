@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Hero, Services, About, Contact } from '@/components/home';
+import { Hero, Services, About, CallToAction } from '@/components/home';
 
 export const metadata: Metadata = {
   title: 'Cabinet CBS | Conseil Fiscal au Mali',
@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       <Services />
       <About />
-      <Contact />
+      <CallToAction />
     </>
   );
 }

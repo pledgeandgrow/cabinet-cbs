@@ -1,7 +1,6 @@
 // Export des composants par catégorie
 export * from './about';
 export * from './contact';
-export * from './expertise';
 export * from './home';
 export * from './legal';
 export * from './services';

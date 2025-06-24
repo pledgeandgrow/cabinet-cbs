@@ -24,6 +24,9 @@ module.exports = {
       borderColor: {
         'light': '#e5e7eb',
       },
+      animation: {
+        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
     },
   },
   plugins: [],

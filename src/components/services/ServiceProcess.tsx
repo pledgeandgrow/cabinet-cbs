@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiMessageSquare, FiClipboard, FiCheckCircle, FiUsers, FiArrowRight } from 'react-icons/fi';
-import Link from 'next/link';
 
 const processSteps = [
   {
@@ -143,18 +142,18 @@ const ServiceProcess = () => {
           </motion.div>
         </div>
         
-        <motion.div 
+        {/* <motion.div 
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <Link href="/contact" className="btn-modern btn-outline btn-lg inline-flex items-center">
+          <Link href="/contact?subject=devis" className="btn-modern btn-outline btn-lg inline-flex items-center">
             Démarrer une consultation
             <FiArrowRight className="ml-2" />
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
